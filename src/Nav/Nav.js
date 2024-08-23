@@ -9,10 +9,12 @@ import {
 import { TbEdit } from "react-icons/tb";
 import { RiRobot2Fill } from "react-icons/ri";
 import { MdMenu } from "react-icons/md";
+import Modal from "../Modal/Modal";
 
 const Nav = ({
   show,
   setShow,
+  setIsOpen,
   showPastConversation,
   setShowPastConversation,
 }) => {
@@ -58,7 +60,11 @@ const Nav = ({
           <NavHeaderSection>
             <RiRobot2Fill size={32} />
             <NavTextSpan>New Chat</NavTextSpan>
-            <TbEdit size={24} cursor={"pointer"} />
+            <TbEdit
+              size={24}
+              cursor={"pointer"}
+              onClick={() => setIsOpen(true)}
+            />
           </NavHeaderSection>
           <NavlButton onClick={() => handlePastConversation()}>
             {setShowPastConversation

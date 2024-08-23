@@ -106,7 +106,6 @@ const Main = ({ showPastConversation, pastConversation }) => {
 
   const handleOpinion = (idx, name) => {
     const filterData = msgArr.filter((item, id) => id === idx);
-    console.log("filter Data", filterData, idx, name);
     filterData[0].like = name === "like";
     filterData[0].disLike = name === "disLike";
     msgArr.slice(idx, 1, filterData);
