@@ -98,7 +98,6 @@ const Main = ({ showPastConversation, pastConversation }) => {
   const handleSave = () => {
     let localPastConversation = localStorage.getItem("message") || [];
     let converPastConversation = JSON.parse(localPastConversation);
-    console.log(converPastConversation);
     if (converPastConversation.length > 0) {
       setMsgArr((prev) => [...prev, ...converPastConversation]);
       localStorage.setItem("message", JSON.stringify(msgArr));
