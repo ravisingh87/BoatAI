@@ -1,14 +1,17 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
-  width: 100%;
+  width: 83%;
   background: #d7c7f421;
   display: flex;
+  align-self: end;
   gap: 20px;
   cursor: pointer;
   box-shadow: 0px 4px 4px 0px #00000040;
   border-radius: 10px;
   padding: 10px;
+  position: relative;
+  right: 2px;
   &:hover {
     .likeOrDislike {
       display: flex;

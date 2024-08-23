@@ -1,12 +1,24 @@
 import styled from "styled-components";
 
 export const MainContainerDiv = styled.div`
-  // width: 100%;
+  width: 80%;
   background: ${(props) => props.theme.textColor.secondary.backgroundColor};
   padding: 10px;
   display: flex;
   flex-direction: column;
   gap: 15rem;
+  @media screen and (max-width: 992px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 576px) {
+    width: 100%;
+  }
+  @media screen and (max-width: 355px) {
+    width: 100%;
+  }
 `;
 
 export const MainHeader = styled.p`
@@ -59,12 +71,15 @@ export const MainSectionTitle = styled.p`
 
 export const MainSectionTilesDiv = styled.div`
   width: 100%;
+  height: 16rem;
+
   display: flex;
   justify-content: center;
   align-items: center;
   flex-flow: wrap;
   gap: 10px;
   margin-top: 5rem;
+  overflow: auto;
 `;
 export const MainSectionTillesCard = styled.div`
   width: 500px;
@@ -129,10 +144,11 @@ export const MainSectionInputDiv = styled.div`
   flex-flow: wrap;
   margin-top: 4rem;
   input {
-    width: 830px;
+    width: 789px;
     height: 41px;
     border-radius: 5px;
     border: 1px;
+    padding-left: 10px;
     @media screen and (max-width: 992px) {
       width: 350px;
     }

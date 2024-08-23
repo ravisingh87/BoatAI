@@ -10,11 +10,20 @@ import { TbEdit } from "react-icons/tb";
 import { RiRobot2Fill } from "react-icons/ri";
 import { MdMenu } from "react-icons/md";
 
-const Nav = ({ show, setShow }) => {
+const Nav = ({
+  show,
+  setShow,
+  showPastConversation,
+  setShowPastConversation,
+}) => {
   const [width, setWidth] = useState(window.innerWidth);
 
   const updateDimensions = () => {
     setWidth(window.innerWidth);
+  };
+
+  const handlePastConversation = () => {
+    setShowPastConversation(!showPastConversation);
   };
 
   useEffect(() => {
@@ -42,14 +51,20 @@ const Nav = ({ show, setShow }) => {
           tabIndex={0}
           $show={show}
           $width={width}
-          onBlur={() => setShow(!show)}
+          onBlur={() => {
+            width < 850 && setShow(!show);
+          }}
         >
           <NavHeaderSection>
             <RiRobot2Fill size={32} />
             <NavTextSpan>New Chat</NavTextSpan>
             <TbEdit size={24} cursor={"pointer"} />
           </NavHeaderSection>
-          <NavlButton>Past Conversations</NavlButton>
+          <NavlButton onClick={() => handlePastConversation()}>
+            {setShowPastConversation
+              ? "Past Conversations"
+              : "Hide Conversations"}{" "}
+          </NavlButton>
         </NavContainerDiv>
       )}
     </>

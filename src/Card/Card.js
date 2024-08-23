@@ -13,8 +13,9 @@ import {
 } from "./Card.styled";
 import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { FaUserLarge } from "react-icons/fa6";
+import { RiRobot2Fill } from "react-icons/ri";
 
-const Card = () => {
+const Card = ({ user, message, time }) => {
   const [opinion, setOpinion] = useState({
     like: false,
     disLike: false,
@@ -31,14 +32,18 @@ const Card = () => {
     <CardContainer>
       <CardUserLogoDiv>
         <CardUserLogoSpan>
-          <FaUserLarge size={35} />
+          {user === "Bot Ai" ? (
+            <RiRobot2Fill size={35} />
+          ) : (
+            <FaUserLarge size={35} />
+          )}
         </CardUserLogoSpan>
       </CardUserLogoDiv>
       <CardUserDetailDiv>
-        <CardUserTitle>Whom said?</CardUserTitle>
-        <CardUserMsg>What said?</CardUserMsg>
+        <CardUserTitle>{user}</CardUserTitle>
+        <CardUserMsg>{message}</CardUserMsg>
         <CardUserTimeDetail>
-          <CardUserTimeSlot>10:33 AM</CardUserTimeSlot>
+          <CardUserTimeSlot>{time}</CardUserTimeSlot>
           <CardUserLikeDisLike className='likeOrDislike'>
             <CardUserLkeDisLikeSpan
               key={"like"}
