@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   CardContainer,
   CardUserDetailDiv,
@@ -14,20 +14,9 @@ import {
 import { AiOutlineDislike, AiOutlineLike } from "react-icons/ai";
 import { FaUserLarge } from "react-icons/fa6";
 import { RiRobot2Fill } from "react-icons/ri";
+import { BiSolidLike, BiSolidDislike } from "react-icons/bi";
 
-const Card = ({ user, message, time }) => {
-  const [opinion, setOpinion] = useState({
-    like: false,
-    disLike: false,
-  });
-  const handleOpinion = (name) => {
-    if (name === "like") {
-      setOpinion({ like: true, disLike: false });
-    } else {
-      setOpinion({ like: false, disLike: true });
-    }
-  };
-
+const Card = ({ user, message, time, like, disLike, idx, handleOpinion }) => {
   return (
     <CardContainer>
       <CardUserLogoDiv>
@@ -48,18 +37,18 @@ const Card = ({ user, message, time }) => {
             <CardUserLkeDisLikeSpan
               key={"like"}
               name='like'
-              value={opinion.like}
-              onClick={() => handleOpinion("like")}
+              value={like}
+              onClick={() => handleOpinion(idx, "like")}
             >
-              <AiOutlineDislike />
+              {like ? <BiSolidLike /> : <AiOutlineLike />}
             </CardUserLkeDisLikeSpan>
             <CardUserLkeDisLikeSpan
               key={"dislike"}
               name='disLike'
-              value={opinion.disLike}
-              onClick={() => handleOpinion("disLike")}
+              value={disLike}
+              onClick={() => handleOpinion(idx, "disLike")}
             >
-              <AiOutlineLike />
+              {disLike ? <BiSolidDislike /> : <AiOutlineDislike />}
             </CardUserLkeDisLikeSpan>
           </CardUserLikeDisLike>
         </CardUserTimeDetail>

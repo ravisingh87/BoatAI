@@ -47,6 +47,8 @@ const Main = ({ showPastConversation, pastConversation }) => {
       msg: value,
       from: "User",
       time: moment(new Date()).format("LT"),
+      like: false,
+      disLike: false,
     };
     if (e.key === "Enter") {
       setShowCard(true);
@@ -94,9 +96,22 @@ const Main = ({ showPastConversation, pastConversation }) => {
   };
 
   const handleSave = () => {
-    if (msgArr.length > 0) {
+    let localPastConversation = localStorage.getItem("message") || [];
+    let converPastConversation = JSON.parse(localPastConversation);
+    console.log(converPastConversation);
+    if (converPastConversation.length > 0) {
+      setMsgArr((prev) => [...prev, ...converPastConversation]);
       localStorage.setItem("message", JSON.stringify(msgArr));
     }
+  };
+
+  const handleOpinion = (idx, name) => {
+    const filterData = msgArr.filter((item, id) => id === idx);
+    console.log("filter Data", filterData, idx, name);
+    filterData[0].like = name === "like";
+    filterData[0].disLike = name === "disLike";
+    msgArr.slice(idx, 1, filterData);
+    setMsgArr([...msgArr]);
   };
 
   useEffect(() => {
@@ -128,7 +143,11 @@ const Main = ({ showPastConversation, pastConversation }) => {
                   user={item.from}
                   message={item.msg}
                   time={item.time}
+                  like={item?.like}
+                  disLike={item?.disLike}
+                  idx={idx}
                   key={idx}
+                  handleOpinion={handleOpinion}
                 />
               ))}
         </MainSectionTilesDiv>
