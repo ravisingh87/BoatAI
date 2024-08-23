@@ -8,7 +8,7 @@ const Home = () => {
   const [show, setShow] = useState(false);
   const [showPastConversation, setShowPastConversation] = useState(false);
   const [pastConversation, setPastConversation] = useState([]);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   useEffect(() => {
     let conversation = localStorage.getItem("message") || [];
     let conversationArr =
